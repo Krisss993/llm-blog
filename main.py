@@ -9,7 +9,7 @@ from io import StringIO
 #LLM and key loading function
 def load_LLM(groq_api_key):
     # Make sure your openai_api_key is set as an environment variable
-    llm = ChatGroq(temperature=0, groq_api_key=groq_api_key)
+    llm = ChatGroq(model='llama3-70b-8192', temperature=0, groq_api_key=groq_api_key)
     return llm
 
 
@@ -82,7 +82,7 @@ if uploaded_file is not None:
         chunk_size=5000, 
         chunk_overlap=350
         )
-    st.write(type(file_input))
+    
     splitted_documents = text_splitter.create_documents([file_input])
 
     llm = load_LLM(groq_api_key=groq_api_key)
