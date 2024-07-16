@@ -82,7 +82,7 @@ if uploaded_file is not None:
         chunk_size=5000, 
         chunk_overlap=350
         )
-
+    st.write(type(file_input))
     splitted_documents = text_splitter.create_documents([file_input])
 
     llm = load_LLM(groq_api_key=groq_api_key)
